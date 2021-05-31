@@ -19,26 +19,38 @@ class List extends Component {
 
     handleClick(event) {
         const itemToAdd = event.target
+        itemToAdd.remove();
         this.setState({
-            title: itemToAdd.value
+            title: itemToAdd.innerHTML
         })
     }
 
     render() {
-        const groceryComponent = this.state.groceryItems.map(groceryItem => 
+        const groceryItemComponent = this.state.groceryItems.map(groceryItem => 
             <ListItem 
                 title={groceryItem} 
                 key={groceryItem.id}
                 onClick={this.handleClick} 
             />
             )
+            console.log(this.state);
+        // const shoppingCartItems = this.state.groceryItems.map(groceryItem => {
+        //     if (groceryItem.title === this.state.title) {
+        //         return ( 
+        //             <ListItem 
+        //                 title={this.state.title} 
+        //                 key={groceryItem.id}
+        //             />
+        //         )
+        //     }
+        //     console.log(groceryItem)
+            
+        // })
 
         return (
             <div>
                 <ul>
-                    {groceryComponent}
-                </ul>
-                <ul>
+                    {groceryItemComponent}
                 </ul>
             </div>
         );
